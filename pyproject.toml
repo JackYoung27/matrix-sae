@@ -1,0 +1,27 @@
+[project]
+name = "matrix-sae"
+version = "0.1.0"
+description = "Sparse autoencoders for matrix-valued recurrent states in GatedDeltaNet"
+requires-python = ">=3.10"
+authors = [{ name = "Jack Young" }]
+dependencies = [
+    "torch==2.8.*",
+    "transformers>=5.0",
+    "numpy",
+    "tqdm",
+    "matplotlib",
+    "datasets",
+    "scipy",
+    "einops",
+    "accelerate",
+]
+
+[project.optional-dependencies]
+fla = ["flash-linear-attention"]
+mamba2 = ["mamba-ssm==2.3.1", "causal-conv1d==1.6.1"]
+logging = ["wandb"]
+
+[tool.pyright]
+include = ["core", "experiments"]
+exclude = ["**/__pycache__"]
+extraPaths = [".", "core", "experiments/analysis", "experiments/extraction", "experiments/steering"]
